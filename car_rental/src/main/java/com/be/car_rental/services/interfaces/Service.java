@@ -1,4 +1,4 @@
-package com.be.car_rental.services;
+package com.be.car_rental.services.interfaces;
 
 import java.util.List;
 

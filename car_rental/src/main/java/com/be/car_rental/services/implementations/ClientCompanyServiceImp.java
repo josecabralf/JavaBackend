@@ -1,8 +1,9 @@
-package com.be.car_rental.services;
+package com.be.car_rental.services.implementations;
 
 import com.be.car_rental.entidades.ClientCompany;
 import com.be.car_rental.entidades.dto.ClientCompanyDto;
 import com.be.car_rental.repositories.ClientCompanyRepository;
+import com.be.car_rental.services.interfaces.ClientCompanyService;
 import com.be.car_rental.services.mappers.ClientCompanyDtoMapper;
 import com.be.car_rental.services.mappers.ClientCompanyEntityMapper;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 @Service
-public class ClientCompanyServiceImp implements ClientCompanyService{
+public class ClientCompanyServiceImp implements ClientCompanyService {
 
     private final ClientCompanyRepository clientCompanyRepository;
     private final ClientCompanyDtoMapper dtoMapper;
@@ -43,15 +44,17 @@ public class ClientCompanyServiceImp implements ClientCompanyService{
     @Override
     public ClientCompanyDto delete(Long id) {
         ClientCompanyDto company = this.getById(id);
-        Optional<ClientCompany> entity = Stream.of(company).map(entityMapper).findFirst();
-        entity.ifPresent(clientCompanyRepository::delete);
+        if(company != null){
+            Optional<ClientCompany> entity = Stream.of(company).map(entityMapper).findFirst();
+            entity.ifPresent(clientCompanyRepository::delete);
+        }
         return company;
     }
 
     @Override
     public ClientCompanyDto getById(Long id) {
         Optional<ClientCompany> company = this.clientCompanyRepository.findById(id);
-        return company.map(dtoMapper).orElseThrow();
+        return company.map(dtoMapper).orElse(null);
     }
 
     @Override
@@ -59,4 +62,5 @@ public class ClientCompanyServiceImp implements ClientCompanyService{
         List<ClientCompany> companies = this.clientCompanyRepository.findAll();
         return companies.stream().map(dtoMapper).toList();
     }
+
 }
