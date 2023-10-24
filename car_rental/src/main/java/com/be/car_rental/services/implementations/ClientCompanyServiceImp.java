@@ -4,8 +4,8 @@ import com.be.car_rental.entidades.ClientCompany;
 import com.be.car_rental.entidades.dto.ClientCompanyDto;
 import com.be.car_rental.repositories.ClientCompanyRepository;
 import com.be.car_rental.services.interfaces.ClientCompanyService;
-import com.be.car_rental.services.mappers.ClientCompanyDtoMapper;
-import com.be.car_rental.services.mappers.ClientCompanyEntityMapper;
+import com.be.car_rental.services.mappers.dtoMappers.ClientCompanyDtoMapper;
+import com.be.car_rental.services.mappers.entityMappers.ClientCompanyEntityMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,5 +62,4 @@ public class ClientCompanyServiceImp implements ClientCompanyService {
         List<ClientCompany> companies = this.clientCompanyRepository.findAll();
         return companies.stream().map(dtoMapper).toList();
     }
-
 }

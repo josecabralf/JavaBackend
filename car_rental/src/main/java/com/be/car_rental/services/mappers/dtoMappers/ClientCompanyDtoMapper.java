@@ -1,4 +1,4 @@
-package com.be.car_rental.services.mappers;
+package com.be.car_rental.services.mappers.dtoMappers;
 
 import com.be.car_rental.entidades.ClientCompany;
 import com.be.car_rental.entidades.dto.ClientCompanyDto;

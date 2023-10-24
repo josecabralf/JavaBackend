@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/clients/companies") // http://localhost:8080/api/clients/company
+@RequestMapping("/api/companies") // http://localhost:8080/api/companies
 public class ClientCompanyController {
 
     private final ClientCompanyService clientCompanyService;

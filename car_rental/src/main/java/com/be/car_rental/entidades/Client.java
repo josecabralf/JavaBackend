@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "Clients")
 @Data
@@ -31,9 +28,10 @@ public class Client {
     private String sex;
 
     @Column(name = "birth_date")
-    private LocalDateTime birthDate;
+    private Long birthDate;
 
     @ManyToOne
     @JoinColumn(name = "client_company_id")
     private ClientCompany company;
+
 }

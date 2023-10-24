@@ -1,10 +1,9 @@
-package com.be.car_rental.services.mappers;
+package com.be.car_rental.services.mappers.entityMappers;
 
 import com.be.car_rental.entidades.ClientCompany;
 import com.be.car_rental.entidades.dto.ClientCompanyDto;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.function.Function;
 
 @Service
