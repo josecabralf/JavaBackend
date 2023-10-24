@@ -15,7 +15,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "clients")
+    @TableGenerator(name = "clients", table = "sqlite_sequence",
+            pkColumnName = "name", valueColumnName = "seq",
+            pkColumnValue="id",
+            initialValue=1, allocationSize=1)
     private long id;
 
     @Column(name = "first_name")

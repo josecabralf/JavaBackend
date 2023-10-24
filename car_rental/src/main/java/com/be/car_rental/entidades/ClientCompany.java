@@ -14,7 +14,11 @@ import java.util.List;
 @AllArgsConstructor
 public class ClientCompany {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "client_companies")
+    @TableGenerator(name = "client_companies", table = "sqlite_sequence",
+            pkColumnName = "name", valueColumnName = "seq",
+            pkColumnValue="id",
+            initialValue=1, allocationSize=1)
     private long id;
 
     private String name;
@@ -26,5 +30,5 @@ public class ClientCompany {
     private String emailContact;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    private List<Client> clientList;
+    private List<Client> clients;
 }
